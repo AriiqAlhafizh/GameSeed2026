@@ -3,14 +3,11 @@ using UnityEngine;
 public class AttackAnim : MonoBehaviour
 {
     Animator animator;
-    SpriteRenderer sr;
-    Collider2D col;
+    Rigidbody2D rb;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
