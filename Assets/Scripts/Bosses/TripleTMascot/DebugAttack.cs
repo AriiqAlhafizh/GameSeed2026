@@ -1,15 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MoveAttack : BossMove
+public class DebugAttack : BossAttack
 {
     
     private void Start()
     {
         ActionEvent += DebugEvent;
-        Duration = 1;
-        Cooldown = 2;
-        IsReady = true;
     }
 
     private void OnDisable()

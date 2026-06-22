@@ -13,7 +13,7 @@ public class BossController : MonoBehaviour
      *  StompAttack
      */
     [Header("Boss MoveSet")]
-    public List<BossMove> Attacks = new();
+    public List<BossAttack> Attacks = new();
 
     [Header("Attack Settings")]
     public int currentPhase = 0;
