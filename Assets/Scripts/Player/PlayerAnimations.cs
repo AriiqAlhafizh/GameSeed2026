@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     public Animator animator;
-    public PlayerInputHandler input;
 
     private int currentStateHash;
     private bool isAttacking;
@@ -24,7 +23,6 @@ public class PlayerAnimations : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        input = GetComponentInChildren<PlayerInputHandler>();
     }
     public void ChangeAnimationState(int newStateHash)
     {
@@ -50,7 +48,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void StartIdle()
     {
-        if (!input.IsMoving && !isAttacking)
+        if (!isAttacking)
         {
             ChangeAnimationState(PlayerIdle);
         }
@@ -58,7 +56,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void StartWalk()
     {
-        if (input.IsMoving && !isAttacking)
+        if (!isAttacking)
         {
             ChangeAnimationState(PlayerWalk);
         }

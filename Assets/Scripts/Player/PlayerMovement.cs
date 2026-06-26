@@ -70,16 +70,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            if (input.IsMoving && IsGrounded())
-            {
-                pAnimation.SetBool(pAnimation.IsWalkingHash, true);
-                pAnimation.StartWalk();
-            }
-            else
-            {
-                pAnimation.SetBool(pAnimation.IsWalkingHash, false);
-                pAnimation.StartIdle();
-            }
+            //if (input.IsMoving && IsGrounded())
+            //{
+            //    pAnimation.SetBool(pAnimation.IsWalkingHash, true);
+            //    pAnimation.StartWalk();
+            //}
+            //else
+            //{
+            //    pAnimation.SetBool(pAnimation.IsWalkingHash, false);
+            //    pAnimation.StartIdle();
+            //}
 
             // HORIZONTAL MOVEMENT LOGIC
             if (input.MovementVector.x < 0)
@@ -158,13 +158,13 @@ public class PlayerMovement : MonoBehaviour
         {
             // Falling: apply extra gravity
             rb.linearVelocity += (fallMultiplier - 1) * Physics2D.gravity.y * Time.deltaTime * Vector2.up;
-            pAnimation.StartOnAir();
+            //pAnimation.StartOnAir();
         }
         else if (rb.linearVelocity.y > 0 && !isJumping)
         {
             // Jump released early: apply extra gravity
             rb.linearVelocity += (lowJumpMultiplier - 1) * Physics2D.gravity.y * Time.deltaTime * Vector2.up;
-            pAnimation.StartOnAir();
+            //pAnimation.StartOnAir();
         }
     }
 
@@ -199,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PerformJump(float jumpForce)
     {
-        pAnimation.StartJump();
+        //pAnimation.StartJump();
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         isJumping = true;
         OnJump?.Invoke();
