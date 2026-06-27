@@ -1,9 +1,12 @@
 ﻿using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
     public Animator animator;
+    public RuntimeAnimatorController defaultController;
+    public AnimatorOverrideController overrideController;
 
     private int currentStateHash;
     [SerializeField] private bool isAttacking;
@@ -21,6 +24,17 @@ public class PlayerAnimations : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        defaultController = animator.runtimeAnimatorController;
+    }
+
+    public void OverrideAnimation()
+    {
+        animator.runtimeAnimatorController = overrideController;
+    }
+
+    public void ResetAnimation()
+    {
+        animator.runtimeAnimatorController = defaultController;
     }
     public void ChangeAnimationState(int newStateHash)
     {
