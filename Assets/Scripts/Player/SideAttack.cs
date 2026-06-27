@@ -6,7 +6,7 @@ public class SideAttack : Ability
     [Header("Attack Settings")]
     public Vector2 spriteOffset;
 
-    Animator animator;
+    public Animator animator;
     Collider2D col;
 
     protected override void Awake()
@@ -36,7 +36,7 @@ public class SideAttack : Ability
         }
     }
 
-    public void TriggerAttack(AttackDirection dir)
+    public virtual void TriggerAttack()
     {
         animator.SetTrigger("Attack1");
     }

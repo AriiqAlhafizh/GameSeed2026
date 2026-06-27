@@ -6,7 +6,7 @@ public class PlayerAnimations : MonoBehaviour
     public Animator animator;
 
     private int currentStateHash;
-    private bool isAttacking;
+    [SerializeField] private bool isAttacking;
 
     public readonly int PlayerIdle = Animator.StringToHash("Idle");
     public readonly int PlayerWalk = Animator.StringToHash("Walk");
@@ -16,9 +16,7 @@ public class PlayerAnimations : MonoBehaviour
     public readonly int PlayerAttack = Animator.StringToHash("Attack_1");
 
     public readonly int IsWalkingHash = Animator.StringToHash("isWalking");
-    public readonly int JumpHash = Animator.StringToHash("Jump");
-    public readonly int OnAirHash = Animator.StringToHash("OnAir");
-    public readonly int LandingHash = Animator.StringToHash("Landing");
+    public readonly int IsFallingHash = Animator.StringToHash("isFalling");
 
     private void Start()
     {
@@ -36,7 +34,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void SetTrigger(int triggerHash)
     {
-        if ( !isAttacking)
+        if (!isAttacking)
             animator.SetTrigger(triggerHash);
     }
 

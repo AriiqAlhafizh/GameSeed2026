@@ -31,14 +31,14 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Debug")]
     public AttackDirection atkDir = AttackDirection.Right;
-    [SerializeField] private AttackDirection lastXDir = AttackDirection.Right;
-    [SerializeField] private float lastAttackTime = -Mathf.Infinity;
+    [SerializeField] protected AttackDirection lastXDir = AttackDirection.Right;
+    [SerializeField] protected float lastAttackTime = -Mathf.Infinity;
 
     // Events
     public event Action OnPogo;
 
     public event Action<AttackDirection> AttackDirectionChanged;
-    public event Action<AttackDirection> OnAttack;
+    public virtual event Action OnAttack;
     public event Action<GameObject> OnAttackHit;
 
 
@@ -84,18 +84,19 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            StartAttack(atkDir);
+            StartAttack();
             lastAttackTime = Time.time;
         }
     }
-    private void StartAttack(AttackDirection dir)
+    protected virtual void StartAttack()
     {
         StartCoroutine(AttackCooldown());
-        OnAttack?.Invoke(dir);
+        OnAttack?.Invoke();
         pAnimation.StartAttack();
+        // add animation on other child scripts here
     }
 
-    private IEnumerator AttackCooldown()
+    protected IEnumerator AttackCooldown()
     {
         pAnimation.SetIsAttacking(true);
         yield return new WaitForSeconds(attackCooldown);
