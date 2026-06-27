@@ -34,6 +34,7 @@ public class SideAttack : Ability
         if (collision.gameObject.CompareTag("Enemy"))
         {
             context.Attack.RegisterHit(collision.gameObject);
+            BossStatsManager.Instance.TakeDamage((int)context.Attack.attackDamage);
             Debug.Log("Hit " + collision.gameObject.name);
         }
     }
