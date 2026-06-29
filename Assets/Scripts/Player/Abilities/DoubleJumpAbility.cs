@@ -35,7 +35,7 @@ public class DoubleJumpAbility : Ability
 
     private void Jump()
     {
-        if (!context.Movement.IsGrounded() && jumps < extraJumps + 1)
+        if (!context.Movement.IsGrounded() && jumps < extraJumps)
         {
             context.Movement.ResetCoyoteTime();
             context.Movement.JumpPressed();

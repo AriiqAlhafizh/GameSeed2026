@@ -6,8 +6,11 @@ public class PogoComboAbility : Ability
     public PocongSideAttack pocongSideAttack;
 
     public float dmgMultiplier = .15f;
+    public float sizeMultiplier = .5f;
     public int maxCombo = 10;
     public int curCombo = 0;
+
+    public GameObject pogoHB;
 
     private void Start()
     {
@@ -31,6 +34,7 @@ public class PogoComboAbility : Ability
         if (curCombo == maxCombo)
         {
             context.Attack.IncreaseDamage(dmgMultiplier * context.Attack.attackDamage);
+            context.Attack.IncreaseSize(pogoHB, sizeMultiplier);
             pocongSideAttack.animator.SetBool(PogoUpgradeHash, true);
         }
     }
@@ -40,5 +44,6 @@ public class PogoComboAbility : Ability
         pocongSideAttack.animator.SetBool(PogoUpgradeHash, false);
         curCombo = 0;
         context.Attack.ResetDamage();
+        context.Attack.ResetSize(pogoHB, sizeMultiplier);
     }
 }

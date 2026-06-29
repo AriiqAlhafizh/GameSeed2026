@@ -297,6 +297,10 @@ GameObject:
   - component: {fileID: 2870566030554816200}
   - component: {fileID: 5594963867681741448}
   - component: {fileID: 2123435777019943790}
+  - component: {fileID: 2486442423111625133}
+  - component: {fileID: 542617035554062137}
+  - component: {fileID: 2993803275808120179}
+  - component: {fileID: 8107533693306888251}
   m_Layer: 6
   m_Name: Pocong
   m_TagString: Player
@@ -412,6 +416,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpBufferTime: 0.15
   isJumping: 0
+  canJump: 0
   coyoteTimeCounter: 0
   wasGrounded: 0
   jumpBufferCounter: 0
@@ -644,6 +649,69 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2486442423111625133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330264819161359538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfad13faef684b4fb567ac4f53222cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpAbility
+  extraJumps: 1
+  jumps: 0
+--- !u!114 &542617035554062137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330264819161359538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7051b827aeec548a27315446d2a45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuperJumpAbility
+  maxJumpMultiplier: 1.5
+  jumpMultiplier: 0.1
+  chargeTime: 1
+  defaultJumpForce: 0
+  isCharging: 0
+  previousYVector: 0
+  chargeTimer: 0
+--- !u!114 &2993803275808120179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330264819161359538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de154bb838db4a44be145a0608abb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PogoAbility
+--- !u!114 &8107533693306888251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330264819161359538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd9ca07cd3db4749b547f98e53225b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PogoComboAbility
+  pocongSideAttack: {fileID: 0}
+  dmgMultiplier: 0.15
+  sizeMultiplier: 0.5
+  maxCombo: 6
+  curCombo: 0
+  pogoHB: {fileID: 7854154802582824441}
 --- !u!1 &7447538106580959649
 GameObject:
   m_ObjectHideFlags: 0

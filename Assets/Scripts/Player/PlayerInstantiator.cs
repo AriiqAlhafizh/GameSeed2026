@@ -11,11 +11,6 @@ public class PlayerInstantiator : MonoBehaviour
     public void SpawnPlayer()
     {
         GameObject player = Instantiate(PlayerManager.Instance.CurrentCharacter.characterPrefab, spawnPos, Quaternion.identity);
-        foreach (var ability in PlayerManager.Instance.CurrentCharacter.startingAbilities)
-        {
-            Type abilityType = ability.GetType();
-            player.AddComponent(abilityType);
-        }
         
         PlayerManager.Instance.ResetStats();
         PlayerManager.Instance.InGame = true;

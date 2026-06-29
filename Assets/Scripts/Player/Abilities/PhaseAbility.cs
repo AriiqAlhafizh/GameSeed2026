@@ -13,6 +13,7 @@ public class PhaseAbility : Ability
     [SerializeField] private float phaseDuration = 1f;
     [SerializeField] private string enemyLayerName = "Enemy";
     [SerializeField] private string playerLayerName = "Player";
+    public float phaseMoveSpeedMultiplier = 1.4f;
 
     [Header("Debug")]
     [SerializeField] private bool inPhaseMode = false;
@@ -46,7 +47,8 @@ public class PhaseAbility : Ability
         pAnimation.SetInAbility(true);
         pAnimation.animator.Play(PhaseThroughHash);
         animator.SetTrigger(PhaseHash);
-        context.Movement.moveSpeed = defaultMoveSpeed * 2f; // Increase move speed during phase
+        context.Movement.moveSpeed = defaultMoveSpeed * phaseMoveSpeedMultiplier; // Increase move speed during phase
+        context.Movement.canJump = false;
         context.Rigidbody.linearVelocityY = 0f;
         context.Rigidbody.gravityScale = 0f; // Disable gravity during phase
 
@@ -61,6 +63,7 @@ public class PhaseAbility : Ability
         context.Attack.canAttack = true;
         pAnimation.SetInAbility(false);
         context.Movement.moveSpeed = defaultMoveSpeed; // Reset move speed after phase
+        context.Movement.canJump = true;
         context.Rigidbody.gravityScale = defaultGravity; // Reset gravity after phase
     }
 

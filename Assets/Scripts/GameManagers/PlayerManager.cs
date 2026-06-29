@@ -14,8 +14,9 @@ public class PlayerManager : MonoBehaviour
     public int MaxHealth;
     public int CurrentHealth;
     public Vector3 PlayerPosition;
-    public float iFrame;
+    public float iFrameDuration;
     public bool inIFrame;
+    public float InputDisabledDuration = 0.4f;
 
     [Header("Game")]
     public bool IsGamePaused;
@@ -62,7 +63,7 @@ public class PlayerManager : MonoBehaviour
     {
         MaxHealth = CurrentCharacter.maxHealth;
         CurrentHealth = MaxHealth;
-        iFrame = CurrentCharacter.iFrameDuration;
+        iFrameDuration = CurrentCharacter.iFrameDuration;
     }
 
     public void SetCharacterData(CharacterData characterData)
@@ -86,6 +87,8 @@ public class PlayerManager : MonoBehaviour
             OnDeath?.Invoke();
 
             // TEMP
+            InGame = false;
+            CurrentPlayerContext = null;
             SceneManager.LoadScene("MainMenu");
         }
 

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTime = 0.1f;
     public float jumpBufferTime = 0.15f;
     public bool isJumping;
+    public bool canJump;
 
     [SerializeField] private float coyoteTimeCounter;
     [SerializeField] private bool wasGrounded;
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         input.JumpReleased += JumpReleased;
 
         canMove = true;
+        canJump = true;
 
         moveSpeed = PlayerManager.Instance.CurrentCharacter.moveSpeed;
         jumpForce = PlayerManager.Instance.CurrentCharacter.jumpForce;
@@ -180,6 +182,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpPressed()
     {
+        if (!canJump)
+            return;
         // Only allow jump if within coyote time (recently grounded)
         if (coyoteTimeCounter > 0f)
         {
@@ -281,6 +285,8 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerManager.Instance.inIFrame = true;
         canMove = false;
+        canJump = false;
+
         if (sourcePos.x < transform.position.x)
         {
             rb.linearVelocity = new Vector2(5f, 5f);
@@ -291,9 +297,12 @@ public class PlayerMovement : MonoBehaviour
         }
         pAnimation.StartHurt();
 
-        yield return new WaitForSeconds(PlayerManager.Instance.iFrame);
+        yield return new WaitForSeconds(PlayerManager.Instance.InputDisabledDuration);
 
-        PlayerManager.Instance.inIFrame = false;
         canMove = true;
+        canJump = true;
+
+        yield return new WaitForSeconds(PlayerManager.Instance.iFrameDuration - PlayerManager.Instance.InputDisabledDuration);
+        PlayerManager.Instance.inIFrame = false; 
     }
 }

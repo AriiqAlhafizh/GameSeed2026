@@ -14,7 +14,10 @@ public class PlayerAttackHitbox : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             context.Attack.RegisterHit(collision.gameObject);
-            BossManager.Instance.TakeDamage((int)context.Attack.attackDamage);
+            if (collision.gameObject.GetComponent<BossController>() != null) 
+            {
+                BossManager.Instance.TakeDamage((int)context.Attack.attackDamage);
+            }
             Debug.Log("Hit " + collision.gameObject.name);
         }
     }

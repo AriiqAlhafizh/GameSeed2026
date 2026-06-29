@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - VFX
+  - ObjToSpawn
+  - ObjToDespawn
+  - Platform
   layers:
   - Default
   - TransparentFX

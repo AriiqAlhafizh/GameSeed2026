@@ -151,6 +151,9 @@ GameObject:
   - component: {fileID: 5238122994066905853}
   - component: {fileID: 5017390796776019444}
   - component: {fileID: 7618881251007817177}
+  - component: {fileID: 2072490512838293781}
+  - component: {fileID: 5205309038272070917}
+  - component: {fileID: 2457376957022161229}
   m_Layer: 6
   m_Name: Kuntilanak
   m_TagString: Player
@@ -511,6 +514,57 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.38344955, y: 0.88467914}
   m_EdgeRadius: 0
+--- !u!114 &2072490512838293781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052693101160497168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522e6df8b7154354cb5c73502b6482fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicComboAbility
+  dmgMultiplier: 0.15
+  sizeMultiplier: 0.5
+  maxCombo: 6
+  curCombo: 0
+  redMode: {fileID: 22100000, guid: c7563addef058084d92869be11955eb8, type: 2}
+--- !u!114 &5205309038272070917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052693101160497168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3374a64815a4a0542bdaf3c986e0bfcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GlideAbility
+  glideFallSpeed: 2
+  isGliding: 0
+--- !u!114 &2457376957022161229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052693101160497168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818a87726b9423b4c816fa150bc25864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhaseAbility
+  phaseCooldown: 1
+  phaseDuration: 1
+  enemyLayerName: Enemy
+  playerLayerName: Player
+  inPhaseMode: 0
+  lastPhaseTime: -Infinity
+  defaultMoveSpeed: 0
+  defaultGravity: 0
 --- !u!1 &4770386535822498965
 GameObject:
   m_ObjectHideFlags: 0
